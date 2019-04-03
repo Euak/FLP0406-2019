@@ -48,7 +48,8 @@ WB_tided <- WB %>%
 WB_filtered <-  WB_tided %>% 
   subset(Year %in% c(1980, 2008) &
          `Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
-           `Indicator Name` == "Government expenditure on education, total (% of GDP)") %>% 
+           `Indicator Name` %in% c("Government expenditure on education, total (% of GDP)",
+                                   "")) %>% 
   select(-X64, -`Country Name`, -`Indicator Code`, -Year)
 
 #Juntando as tabelas
@@ -56,5 +57,9 @@ dados <- inner_join(democracy_1980_2008_LA, WB_filtered, by = c("ccdcodelet" = "
 
 #Procedimento 6
 dados %>% 
-  ggplot(aes(x = `Indicator Value`, y = democracy)) +
-  geom_point()
+  subset(year == 1980) %>% 
+  na.omit() %>% 
+    ggplot(aes(x = `Indicator Value`, y = democracy)) +
+    geom_point()
+
+
