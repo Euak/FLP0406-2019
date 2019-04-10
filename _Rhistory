@@ -1,0 +1,220 @@
+#Importação da base
+library(readxl)
+Base_de_dados <- read_excel("Lab 3/Base de dados.xlsx")
+#Importação da base
+remove.packages(readxl)
+#Importação da base
+remove.packages("readxl")
+install.packages("readxl")
+install.packages("readxl")
+library(readxl)
+Base_de_dados <- read_excel("Lab 3/Base de dados.xlsx")
+View(Base_de_dados)
+library(tidyverse)
+#Procedimento 1
+Base_de_dados %>%
+subset(year == 2008)
+View(Base_de_dados)
+summary(Base_de_dados$un_region_name)
+unique(Base_de_dados$un_region_name)
+unique(Base_de_dados$aclp_region)
+unique(Base_de_dados$un_region_name)
+#Procedimento 1
+latin_america <- c("Caribbean", "South America", "Central America")
+Base_de_dados %>%
+subset(year == 2008,
+un_region_name %in% latin_america)
+unique(Base_de_dados$un_region_name)
+?subset
+is_latin_america <- region_name %in% latin_america
+Base_de_dados %>%
+subset(year == 2008,
+un_region_name %in% latin_america)
+Base_de_dados %>%
+subset(year == 2008,
+un_region_name %in% c("Caribbean"))
+Base_de_dados %>%
+subset(year == 2008,
+un_region_name == "Caribbean")
+unique(Base_de_dados$un_region_name)
+Base_de_dados %>%
+subset(
+un_region_name == "Caribbean")
+Base_de_dados %>%
+subset(year == 2008 &&
+un_region_name == "Caribbean")
+Base_de_dados %>%
+subset(year == 2008 &&
+un_region_name %in% latin_america)
+Base_de_dados %>%
+subset(
+un_region_name %in% latin_america)
+Base_de_dados %>%
+subset(year == 2008 AND
+un_region_name %in% latin_america)
+Base_de_dados %>%
+subset(year == 2008 &
+un_region_name %in% latin_america)
+Base_de_dados %>%
+subset(year == 2008 &
+un_region_name %in% latin_america) %>%
+select(ctryname, BQ)
+Base_de_dados$democracy
+Base_de_dados %>%
+subset(year == 2008 &
+un_region_name %in% latin_america) %>%
+select(ctryname, democracy)
+democracy_2008_LA <- Base_de_dados %>%
+subset(year == 2008 &
+un_region_name %in% latin_america) %>%
+select(ctryname, democracy)
+View(democracy_2008_LA)
+write.csv(democracy_2008_LA, "Lab 3/democracy_2008_LA.csv")
+write.csv(democracy_2008_LA, "Lab 3/democracy_2008_LA.csv", sep = ",")
+?write.csv
+write.table(democracy_2008_LA, "Lab 3/democracy_2008_LA.csv", sep = ",")
+write.table(democracy_2008_LA, "Lab 3/democracy_2008_LA.csv", sep = ",", col.names = NA,
+qmethod = "double")
+write.table(democracy_2008_LA, "Lab 3/democracy_2008_LA.csv", sep = ",", col.names = NA,
+qmethod = "double", quote = FALSE)
+#Exercício B
+democracy_1980_LA <- Base_de_dados %>%
+subset(year == 1980 &
+un_region_name %in% latin_america) %>%
+select(ctryname, democracy)
+write.table(democracy_1980_LA, "Lab 3/democracy_1980_LA.csv", sep = ",", col.names = NA,
+qmethod = "double", quote = FALSE)
+View(democracy_1980_LA)
+democracy_1980_LA %>%
+ggplot(aes(x = democracy)) +
+geom_bar()
+summarise(democracy_1980_LA)
+summarise(democracy_1980_LA)
+summarise(democracy_1980_LA, n())
+summary(democracy_1980_LA)
+#Procedimento 2
+democracy_1980_2008_LA <- Base_de_dados %>%
+subset(year %in% c(1980, 2008) &
+un_region_name %in% latin_america) %>%
+select(ctryname, democracy)
+View(democracy_2008_LA)
+#Procedimento 2
+democracy_1980_2008_LA <- Base_de_dados %>%
+subset(year %in% c(1980, 2008) &
+un_region_name %in% latin_america) %>%
+select(ctryname, democracy, year)
+View(democracy_1980_2008_LA)
+#Procedimento 2
+democracy_1980_2008_LA <- Base_de_dados %>%
+subset(year %in% c(1980, 2008) &
+un_region_name %in% latin_america) %>%
+select(ctryname, year, democracy)
+View(democracy_1980_2008_LA)
+write.table(democracy_1980_2008_LA, "Lab 3/democracy_1980_2008_LA_lab1.csv", sep = ";", col.names = NA,
+quote = FALSE)
+#Procedimento 3 e 4
+read_csv("Lab 3/WorldBank/API_4_DS2_en_csv_v2_10517253.csv", col_names = TRUE)
+#Procedimento 3 e 4
+WB <- read_csv("Lab 3/WorldBank/API_4_DS2_en_csv_v2_10517253.csv", col_names = TRUE)
+View(WB)
+#Procedimento 3 e 4
+WB <- read_csv("Lab 3/WorldBank/API_4_DS2_en_csv_v2_10517253.csv", col_names = TRUE, skip = 4)
+View(WB)
+WB %>%
+teste <- gather("Year", "Indicator Value", 1960:2018)
+WB %>%
+select(1960:2018)
+WB %>%
+select('1960':'2018')
+WB %>%
+teste <- gather("Year", "Indicator Value", '1960':'2018')
+teste <- gather(WB, "Year", "Indicator Value", '1960':'2018')
+teste <-
+WB %>%
+gather(WB, "Year", "Indicator Value", '1960':'2018')
+teste <-
+WB %>%
+gather("Year", "Indicator Value", '1960':'2018')
+teste <- WB %>%
+gather("Year", "Indicator Value", '1960':'2018')
+View(teste)
+unique(teste$Year)
+rm(teste)
+#Procedimento 3 e 4
+#Agrupando o ano
+WB_tided <- WB %>%
+gather("Year", "Indicator Value", '1960':'2018')
+View(WB_tided)
+View(democracy_1980_2008_LA)
+View(Base_de_dados)
+#Procedimento 2
+democracy_1980_2008_LA <- Base_de_dados %>%
+subset(year %in% c(1980, 2008) &
+un_region_name %in% latin_america) %>%
+select(ccdcodelet, ctryname, year, democracy)
+unique(democracy_1980_2008_LA$ccdcodelet)
+unique(WB_tided$`Indicator Name`)
+WB_teste <-  WB_tided %>%
+subset(Year %in% c(1980, 2008) &
+`Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
+`Indicator Name` == "Government expenditure on education, total (% of GDP)") %>%
+select(-X64, -`Country Name`)
+View(WB)
+View(WB_teste)
+WB_teste <-  WB_tided %>%
+subset(Year %in% c(1980, 2008) &
+`Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
+`Indicator Name` == "Government expenditure on education, total (% of GDP)") %>%
+select(-X64, -`Country Name`, `Indicator Code`)
+View(WB_teste)
+WB_teste <-  WB_tided %>%
+subset(Year %in% c(1980, 2008) &
+`Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
+`Indicator Name` == "Government expenditure on education, total (% of GDP)") %>%
+select(-X64, -`Country Name`, `Indicator Code`)
+WB_teste <-  WB_tided %>%
+subset(Year %in% c(1980, 2008) &
+`Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
+`Indicator Name` == "Government expenditure on education, total (% of GDP)") %>%
+select(-X64, -`Country Name`, -`Indicator Code`)
+WB_teste <-  WB_tided %>%
+subset(Year %in% c(1980, 2008) &
+`Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
+`Indicator Name` == "Government expenditure on education, total (% of GDP)") %>%
+select(-X64, -`Country Name`, -`Indicator Code`, -Year)
+rm(WB_teste)
+WB_filtered <-  WB_tided %>%
+subset(Year %in% c(1980, 2008) &
+`Country Code` %in% unique(democracy_1980_2008_LA$ccdcodelet) &
+`Indicator Name` == "Government expenditure on education, total (% of GDP)") %>%
+select(-X64, -`Country Name`, -`Indicator Code`, -Year)
+teste <- inner_join(democracy_1980_2008_LA, WB_filtered, by = c("ccdcodelet", "Country Code"))
+teste <- inner_join(democracy_1980_2008_LA, WB_filtered, by = c("ccdcodelet" = "Country Code"))
+View(teste)
+rm(teste)
+#Juntando as tabelas
+dados <- inner_join(democracy_1980_2008_LA, WB_filtered, by = c("ccdcodelet" = "Country Code"))
+View(dados)
+#Procedimento 6
+dados %>%
+ggplot(aes(x = `Indicator Value`, y = democracy)) +
+geom_point()
+na.omit(dados)
+#Procedimento 6
+na.omit(dados) %>%
+ggplot(aes(x = `Indicator Value`, y = democracy)) +
+geom_point()
+#Procedimento 6
+dados %>%
+subset(year == 2008) %>%
+na.omit() %>%
+ggplot(aes(x = `Indicator Value`, y = democracy)) +
+geom_point()
+#Procedimento 6
+dados %>%
+subset(year == 1980) %>%
+na.omit() %>%
+ggplot(aes(x = `Indicator Value`, y = democracy)) +
+geom_point()
+unique(WB_tided$`Indicator Name`)
+git status
